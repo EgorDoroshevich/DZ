@@ -1,0 +1,11 @@
+<button
+  class="action-button"
+  [style.width]="width"
+  [style.background]="background"
+  [style.--hover-color]="hoverColor"
+  [style.color]="color"
+  [style.border]="border"
+  (click)="onClick.emit()"
+>
+  {{ name }}
+</button>

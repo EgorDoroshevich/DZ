@@ -1,11 +1,11 @@
 <button
   class="action-button"
-  [style.width]="width"
-  [style.background]="background"
-  [style.--hover-color]="hoverColor"
-  [style.color]="color"
-  [style.border]="border"
+  [style.width]="width()"
+  [style.--btn-bg]="background()"
+  [style.--btn-hover-bg]="hoverColor()"
+  [style.color]="color()"
+  [style.border]="border()"
   (click)="onClick.emit()"
 >
-  {{ name }}
+  {{ name() }}
 </button>

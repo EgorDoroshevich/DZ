@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, output, Output } from '@angular/core';
 
 @Component({
   imports: [CommonModule],
@@ -8,11 +8,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './action-button-component.html',
 })
 export class ActionButtonComponent {
-  @Input() name = 'Кнопка';
-  @Input() width = '180px';
-  @Input() color = '#7758b5';
-  @Input() background = '#bd9ff833';
-  @Input() hoverColor = '#7758b5';
-  @Input() border = '';
-  @Output() onClick = new EventEmitter<void>();
+  name = input('Кнопка');
+  width = input('180px');
+  color = input('#7758b5');
+  background = input('#bd9ff833');
+  hoverColor = input('#7758b5');
+  border = input('');
+  onClick = output<void>();
 }

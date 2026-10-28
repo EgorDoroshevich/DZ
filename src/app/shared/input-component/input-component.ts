@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 
 @Component({
   imports: [CommonModule],
@@ -8,8 +8,8 @@ import { Component, Input } from '@angular/core';
   templateUrl: './input-component.html',
 })
 export class InputComponent {
-  @Input() width = '200px';
-  @Input() height = '';
-  @Input() placeholder = 'Введите текст';
-  @Input() border = '';
+  width = input('200px');
+  height = input('');
+  placeholder = input('Введите текст');
+  border = input('');
 }

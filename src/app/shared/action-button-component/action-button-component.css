@@ -4,13 +4,8 @@
   align-items: center;
   border: 1px solid #7758b5;
   justify-content: center;
-  align-items: center;
   background: #7758b51a;
   cursor: pointer;
   border-radius: 8px;
   transition: 0.3s;
-  &:hover {
-    transition: 0.3s;
-    background-color: var(--hover-color) !important;
-  }
 }

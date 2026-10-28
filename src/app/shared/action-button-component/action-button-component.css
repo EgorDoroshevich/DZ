@@ -1,0 +1,11 @@
+.action-button {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  border: 1px solid #7758b5;
+  justify-content: center;
+  background: #7758b51a;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}

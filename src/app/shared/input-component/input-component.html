@@ -1,9 +1,10 @@
-<div>
-  <input
-    class="input-component"
-    [style.width]="width()"
-    [style.height]="height()"
-    [style.border]="border()"
-    [placeholder]="placeholder()"
-  />
-</div>
+<input
+  class="input-component"
+  [style.width]="width()"
+  [style.height]="height()"
+  [style.border]="border()"
+  [placeholder]="placeholder()"
+  [value]="value"
+  (input)="onInput($event)"
+  (blur)="onTouched()"
+/>

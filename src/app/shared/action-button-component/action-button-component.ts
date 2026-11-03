@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, input, Input, output, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   imports: [CommonModule],
@@ -8,11 +8,12 @@ import { Component, EventEmitter, input, Input, output, Output } from '@angular/
   templateUrl: './action-button-component.html',
 })
 export class ActionButtonComponent {
-  name = input('Кнопка');
-  width = input('180px');
-  color = input('#7758b5');
-  background = input('#bd9ff833');
-  hoverColor = input('#7758b5');
-  border = input('');
+  name = input<string>('Кнопка');
+  width = input<string>('180px');
+  color = input<string>('#7758b5');
+  background = input<string>('#bd9ff833');
+  hoverColor = input<string>('#7758b5');
+  border = input<string>('');
   onClick = output<void>();
+  isDisabled = input<boolean>(false);
 }

@@ -8,4 +8,15 @@
   cursor: pointer;
   border-radius: 8px;
   transition: 0.3s;
+  &:hover {
+    transition: 0.3s;
+    background-color: var(--hover-color) !important;
+  }
+
+  &.disabled,
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }

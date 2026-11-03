@@ -1,0 +1,45 @@
+<div class="main-container w-full">
+  <div class="flex items-center justify-center w-200">
+    <h1>To Do List</h1>
+  </div>
+  <div>
+    <div class="flex items-center justify-between w-200 descriptions">
+      @for (item of items(); track item.id) {
+        <div class="flex item-list min-w-200">
+          <div class="mx-5px">
+            <p>{{ item.description }}</p>
+          </div>
+          <div>
+            <app-action-button
+              [hoverColor]="'#ff0000'"
+              [background]="'#ff0000b3'"
+              [border]="'1px solid #ff0000'"
+              [color]="'#fff'"
+              [width]="'70px'"
+              [name]="'Удалить'"
+              (onClick)="deleteNote(item.id)"
+            />
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="flex items-center justify-between w-200">
+    <app-input-component
+      [width]="'320px'"
+      [border]="'1px solid #000'"
+      [placeholder]="'Введите заметку'"
+      [(ngModel)]="note"
+    />
+
+    <app-action-button
+      [background]="'#027d0299'"
+      [hoverColor]="'#027d02'"
+      [border]="'1px solid #027d02'"
+      [color]="'#fff'"
+      [name]="'Добавить запись'"
+      [isDisabled]="note.length === 0"
+      (onClick)="addNote()"
+    />
+  </div>
+</div>

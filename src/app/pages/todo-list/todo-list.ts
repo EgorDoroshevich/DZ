@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { TodoItem } from '../todo-item/todo-item';
 interface TodoListItem {
   id: number;
   description?: string;
@@ -25,7 +26,7 @@ const todoListItem: TodoListItem[] = [
   },
 ];
 @Component({
-  imports: [MatFormFieldModule, MatInputModule, FormsModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, TodoItem],
   selector: 'app-todo-list',
   styleUrl: './todo-list.css',
   templateUrl: './todo-list.html',

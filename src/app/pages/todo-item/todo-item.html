@@ -1,0 +1,8 @@
+<div class="flex item-list min-w-200">
+  <div class="mx-5px">
+    <p>{{ description() }}</p>
+  </div>
+  <div>
+    <button (click)="onClick.emit()" class="button" [class.button--delete]="true">Удалить</button>
+  </div>
+</div>

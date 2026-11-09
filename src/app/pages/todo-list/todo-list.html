@@ -5,16 +5,10 @@
   <div>
     <div class="flex items-center justify-between w-200 descriptions">
       @for (item of items(); track item.id) {
-        <div class="flex item-list min-w-200">
-          <div class="mx-5px">
-            <p>{{ item.description }}</p>
-          </div>
-          <div>
-            <button (click)="deleteNote(item.id)" class="button" [class.button--delete]="true">
-              Удалить
-            </button>
-          </div>
-        </div>
+        <app-todo-item
+          [description]="item.description!"
+          (onClick)="deleteNote(item.id)"
+        ></app-todo-item>
       }
     </div>
   </div>

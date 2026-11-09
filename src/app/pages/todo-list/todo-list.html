@@ -1,0 +1,30 @@
+<div class="main-container w-full">
+  <div class="flex items-center justify-center w-200">
+    <h1>To Do List</h1>
+  </div>
+  <div>
+    <div class="flex items-center justify-between w-200 descriptions">
+      @for (item of items(); track item.id) {
+        <app-todo-item
+          [description]="item.description!"
+          (onClick)="deleteNote(item.id)"
+        ></app-todo-item>
+      }
+    </div>
+  </div>
+  <div class="flex items-center justify-between w-200">
+    <mat-form-field>
+      <mat-label>Напишите заметку</mat-label>
+      <input name="note" matInput [(ngModel)]="note" />
+    </mat-form-field>
+
+    <button
+      (click)="addNote()"
+      class="button"
+      [class.button--add]="true"
+      [class.disabled]="note.length === 0"
+    >
+      Добавить
+    </button>
+  </div>
+</div>

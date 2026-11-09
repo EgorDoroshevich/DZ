@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { ActionButtonComponent } from '../../shared/action-button-component/action-button-component';
-import { InputComponent } from '../../shared/input-component/input-component';
 import { FormsModule } from '@angular/forms';
-interface ToDoListArr {
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+interface TodoListItem {
   id: number;
   description?: string;
 }
 
-const todoListArr: ToDoListArr[] = [
+const todoListItem: TodoListItem[] = [
   {
     id: 1,
     description:
@@ -25,24 +25,28 @@ const todoListArr: ToDoListArr[] = [
   },
 ];
 @Component({
-  imports: [ActionButtonComponent, InputComponent, FormsModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule],
   selector: 'app-todo-list',
   styleUrl: './todo-list.css',
   templateUrl: './todo-list.html',
 })
 export class TodoList {
-  readonly items = signal<ToDoListArr[]>(todoListArr);
+  readonly items = signal<TodoListItem[]>(todoListItem);
   note = '';
 
   addNote() {
-    const value = { id: Math.random() * 1000, description: this.note };
-    this.items.update((todoListArr: ToDoListArr[]) => {
-      return [...todoListArr, value];
+    if (this.note.length === 0) return;
+    const maxId = this.items().reduce((max, item) => Math.max(max, item.id), 0);
+    console.log(maxId);
+    const value = { id: maxId + 1, description: this.note };
+    this.items.update((todoListItem: TodoListItem[]) => {
+      return [...todoListItem, value];
     });
     this.note = '';
   }
 
   deleteNote(id: number) {
+    if (!id) return;
     const deletedItems = this.items().filter((item) => item.id !== id);
     this.items.set(deletedItems);
   }

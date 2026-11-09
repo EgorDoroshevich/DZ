@@ -10,36 +10,27 @@
             <p>{{ item.description }}</p>
           </div>
           <div>
-            <app-action-button
-              [hoverColor]="'#ff0000'"
-              [background]="'#ff0000b3'"
-              [border]="'1px solid #ff0000'"
-              [color]="'#fff'"
-              [width]="'70px'"
-              [name]="'Удалить'"
-              (onClick)="deleteNote(item.id)"
-            />
+            <button (click)="deleteNote(item.id)" class="button" [class.button--delete]="true">
+              Удалить
+            </button>
           </div>
         </div>
       }
     </div>
   </div>
   <div class="flex items-center justify-between w-200">
-    <app-input-component
-      [width]="'320px'"
-      [border]="'1px solid #000'"
-      [placeholder]="'Введите заметку'"
-      [(ngModel)]="note"
-    />
+    <mat-form-field>
+      <mat-label>Напишите заметку</mat-label>
+      <input name="note" matInput [(ngModel)]="note" />
+    </mat-form-field>
 
-    <app-action-button
-      [background]="'#027d0299'"
-      [hoverColor]="'#027d02'"
-      [border]="'1px solid #027d02'"
-      [color]="'#fff'"
-      [name]="'Добавить запись'"
-      [isDisabled]="note.length === 0"
-      (onClick)="addNote()"
-    />
+    <button
+      (click)="addNote()"
+      class="button"
+      [class.button--add]="true"
+      [class.disabled]="note.length === 0"
+    >
+      Добавить
+    </button>
   </div>
 </div>

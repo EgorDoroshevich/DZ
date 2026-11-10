@@ -1,0 +1,8 @@
+<div class="flex item-list min-w-200">
+  <div class="mx-5px">
+    <p>{{ description() }}</p>
+  </div>
+  <div>
+    <app-button [title]="'Удалить'" [deleted]="true" (onClick)="onClick.emit()" />
+  </div>
+</div>

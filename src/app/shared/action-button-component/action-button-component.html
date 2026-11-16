@@ -5,7 +5,7 @@
   [style.-btn-hover-bg]="hoverColor()"
   [style.color]="color()"
   [style.border]="border()"
-  (click)="onClick.emit()"
+  (click)="buttonClick.emit()"
   [class.disabled]="isDisabled()"
 >
   {{ name() }}

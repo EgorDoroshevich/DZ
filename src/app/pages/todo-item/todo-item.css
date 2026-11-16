@@ -1,10 +1,14 @@
 .item-list {
   border: 1px solid #000;
-  margin: 10px 0;
+  margin: 10px;
   padding: 5px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
+  &.selected {
+    background-color: #4fa0f0;
+  }
 }
 
 .button {

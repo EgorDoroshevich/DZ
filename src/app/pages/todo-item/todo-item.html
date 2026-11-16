@@ -1,0 +1,15 @@
+<div
+  class="flex item-list min-w-200"
+  [class.selected]="selectedItemId() === id()"
+  (click)="selectItem.emit(id())"
+>
+  <div class="mx-2 flex gap-3">
+    <div class="w-130">
+      <span>Текст</span>
+      <p>{{ text() }}</p>
+    </div>
+  </div>
+  <div>
+    <app-button [title]="'Удалить'" [deleted]="true" (buttonClick)="buttonClick.emit(id())" />
+  </div>
+</div>

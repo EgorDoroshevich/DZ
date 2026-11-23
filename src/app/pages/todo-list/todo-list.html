@@ -1,0 +1,35 @@
+<div class="main-container w-full">
+  <div class="flex items-center justify-center w-200">
+    <h1>To Do List</h1>
+  </div>
+  <div>
+    <ul class="flex items-center justify-between w-200 descriptions">
+      @for (item of items; track item.id) {
+        <li class="flex item-list">
+          <p>{{ item.description }}</p>
+          <app-action-button
+            [hoverColor]="'#ff0000'"
+            [background]="'#ff0000b3'"
+            [border]="'1px solid #ff0000'"
+            [color]="'#fff'"
+            [width]="'70px'"
+            [name]="'Удалить'"
+          />
+        </li>
+      }
+    </ul>
+  </div>
+  <div class="flex items-center justify-between w-200">
+    <app-input-component
+      [width]="'320px'"
+      [border]="'1px solid #000'"
+      [placeholder]="'Введите заметку'"
+    />
+    <app-action-button
+      [background]="'#7758b599'"
+      [hoverColor]="'#7758b5'"
+      [color]="'#fff'"
+      [name]="'Добавить запись'"
+    />
+  </div>
+</div>

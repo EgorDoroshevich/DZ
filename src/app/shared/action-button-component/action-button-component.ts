@@ -14,6 +14,6 @@ export class ActionButtonComponent {
   background = input<string>('#bd9ff833');
   hoverColor = input<string>('#7758b5');
   border = input<string>('');
-  onClick = output<void>();
+  buttonClick = output<void>();
   isDisabled = input<boolean>(false);
 }

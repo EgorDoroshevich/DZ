@@ -7,13 +7,27 @@
     <div class="flex items-center justify-center w-200">
       <h1>To Do List</h1>
     </div>
-    <div>
+    <div class="flex gap-5">
       <div class="flex items-center justify-between w-200 descriptions">
         @for (item of items(); track item.id) {
           <app-todo-item
-            [description]="item.description!"
-            (onClick)="deleteNote(item.id)"
+            [appTooltip]="item.description"
+            [id]="item.id"
+            [description]="item.description"
+            [text]="item.text"
+            [selectedItemId]="selectedItemId()"
+            (selectItem)="selectItem($event)"
+            (buttonClick)="deleteNote(item.id)"
           ></app-todo-item>
+        }
+      </div>
+      <div
+        class="mt-4 w-100 h-85 border border-black bg-amber-100 flex items-center justify-center"
+      >
+        @for (item of items(); track item.id) {
+          @if (selectedItemId() === item.id && selectedItemId !== null) {
+            {{ item.description }}
+          }
         }
       </div>
     </div>
@@ -23,11 +37,16 @@
         <input name="note" matInput [(ngModel)]="note" />
       </mat-form-field>
 
+      <mat-form-field>
+        <mat-label>Textarea</mat-label>
+        <textarea matInput name="description" [(ngModel)]="description"></textarea>
+      </mat-form-field>
       <app-button
+        [appTooltip]="'Добавить заметку'"
         [title]="'Добавить'"
-        (onClick)="addNote()"
+        (buttonClick)="addNote()"
         [addButton]="true"
-        [isDisabled]="note.length === 0"
+        [isDisabled]="note.length === 0 && description.length === 0"
       />
     </div>
   </div>

@@ -1,0 +1,9 @@
+<button
+  (click)="onClick.emit()"
+  class="button"
+  [class.button--add]="addButton()"
+  [class.disabled]="isDisabled()"
+  [class.button--delete]="deleted()"
+>
+  {{ title() }}
+</button>

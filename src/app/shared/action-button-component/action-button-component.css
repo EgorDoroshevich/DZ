@@ -8,4 +8,11 @@
   cursor: pointer;
   border-radius: 8px;
   transition: 0.3s;
+
+  &.disabled,
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }

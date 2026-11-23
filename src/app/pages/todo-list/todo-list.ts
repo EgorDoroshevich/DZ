@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
-import { ActionButtonComponent } from '../../shared/action-button-component/action-button-component';
-import { InputComponent } from '../../shared/input-component/input-component';
-interface ToDoListArr {
+import { Component, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { TodoItem } from '../todo-item/todo-item';
+interface TodoListItem {
   id: number;
   description?: string;
 }
 
-const todoListArr: ToDoListArr[] = [
+const todoListItem: TodoListItem[] = [
   {
     id: 1,
     description:
@@ -24,11 +26,29 @@ const todoListArr: ToDoListArr[] = [
   },
 ];
 @Component({
-  imports: [ActionButtonComponent, InputComponent],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, TodoItem],
   selector: 'app-todo-list',
   styleUrl: './todo-list.css',
   templateUrl: './todo-list.html',
 })
 export class TodoList {
-  readonly items = todoListArr;
+  readonly items = signal<TodoListItem[]>(todoListItem);
+  note = '';
+
+  addNote() {
+    if (this.note.length === 0) return;
+    const maxId = this.items().reduce((max, item) => Math.max(max, item.id), 0);
+    console.log(maxId);
+    const value = { id: maxId + 1, description: this.note };
+    this.items.update((todoListItem: TodoListItem[]) => {
+      return [...todoListItem, value];
+    });
+    this.note = '';
+  }
+
+  deleteNote(id: number) {
+    if (!id) return;
+    const deletedItems = this.items().filter((item) => item.id !== id);
+    this.items.set(deletedItems);
+  }
 }
